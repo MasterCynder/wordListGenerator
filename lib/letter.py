@@ -1,65 +1,6 @@
-# import word
+import sys
 
-class MyWord:
-    def __init__(self, word):
-        self.word = word
-        i = 0
-        self.tabPossibilities = []
-        while i < len(word):
-            self.tabPossibilities.append([word[i]])
-            i = i + 1
-    
-    def addLeet(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (MyLetter(eachLetter).leet())
-            i = i + 1  
-        print(self.tabPossibilities)
-            
-    def addMajuscule(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (MyLetter(eachLetter).majuscule())
-            i = i + 1  
-        print(self.tabPossibilities)
-            
-    def addMinuscule(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (MyLetter(eachLetter).minuscule())
-            i = i + 1
-        print(self.tabPossibilities)
-        
-            
-    def loadWordList(self):
-        self.wordList = self.listAllPossibilities('', self.tabPossibilities)
-        
-    def printWordList(self):
-        for tmpWord in self.wordList:
-            print(tmpWord)
-    
-    def listAllPossibilities(self, letter, tab):
-        if (len(tab) == 1):
-            return tab[0]
-        else:
-            result = []
-            i = 1
-            tab2  = []
-            while i < len(tab):
-                tab2.append(tab[i])
-                i = i + 1
-            i = 0
-            while i < len(tab[0]):
-                tab_tmp = self.listAllPossibilities(tab[0][i], tab2)
-                j = 0
-                while j < len(tab_tmp):
-                    result.append(tab[0][i] + tab_tmp[j])
-                    j = j + 1
-                i = i + 1
-            return result
-    
-        
-class MyLetter:
+class Letter:
     def __init__(self, letter):
         self.letter = letter
         
@@ -68,6 +9,8 @@ class MyLetter:
         if (self.letter == 'a' or self.letter == 'A'):
             result.append('@')
             result.append('4')
+        if (self.letter == 'b' or self.letter == 'B'):
+            result.append('8')
         if (self.letter == 'e' or self.letter == 'E'): 
             result.append('3')
         if (self.letter == 'i' or self.letter == 'I'): 
@@ -79,7 +22,7 @@ class MyLetter:
         return result
         
         
-    def majuscule(self):
+    def upperCase(self):
         result = []
         if (self.letter == 'a'): 
             result.append('A')
@@ -136,7 +79,7 @@ class MyLetter:
             
         return result
            
-    def minuscule(self):
+    def lowerCase(self):
         result = []
         if (self.letter == 'A'): 
             result.append('a')
@@ -192,13 +135,3 @@ class MyLetter:
             result.append('z')
             
         return result
-           
-                   
-
-myWord = MyWord("Pierre")
-myWord.addLeet()
-myWord.addMajuscule()
-myWord.addMinuscule()
-myWord.loadWordList()
-myWord.printWordList()
-
