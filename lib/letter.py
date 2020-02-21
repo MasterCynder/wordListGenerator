@@ -6,6 +6,16 @@ class Letter:
         
     def leet(self):
         result = []
+        if (self.letter == '1'):
+            result.append('a')
+            result.append('b')
+            result.append('c')
+            result.append('d')
+        if (self.letter == '2'):
+            result.append('w')
+            result.append('x')
+            result.append('y')
+            result.append('z')
         if (self.letter == 'a' or self.letter == 'A'):
             result.append('@')
             result.append('4')

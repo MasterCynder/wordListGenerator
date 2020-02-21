@@ -1,5 +1,6 @@
 import sys
 import lib
+from math import *
 from lib import letter as lt
 # import letter as lt
 
@@ -60,3 +61,26 @@ class Word:
                     j = j + 1
                 i = i + 1
             return result
+        
+        
+    def loadNumbers(self):
+    # Load the number of combination for each letter  
+        self.tabNumbers = []
+        self.combinationNumber = 1
+        for tabPossibilitiesLetter in self.tabPossibilities:
+            sizeTmp = len(tabPossibilitiesLetter)
+            self.tabNumbers.append(sizeTmp)
+            self.combinationNumber = self.combinationNumber * sizeTmp
+            
+    def convertNumberInCombination(self, number):
+        result = ''
+        i = 0
+        for letterNumber in self.tabNumbers:
+            remainder = number % letterNumber
+            number = number // letterNumber
+            result = result + self.tabPossibilities[i][remainder]
+            i = i + 1
+        return result
+        
+    def returnNbCombination(self):
+        return self.combinationNumber
