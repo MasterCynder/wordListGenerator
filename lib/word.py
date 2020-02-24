@@ -84,3 +84,7 @@ class Word:
         
     def returnNbCombination(self):
         return self.combinationNumber
+        
+    def weightPossibilities(self):
+        charWeight = 1.25
+        return charWeight * self.returnNbCombination() * len(self.word)

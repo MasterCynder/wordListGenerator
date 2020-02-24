@@ -16,7 +16,6 @@ class OpenFile:
         lines = self.content.split('\n')
         for line in lines:
             self.keyWordTab.append(line.split(','))
-        # print(self.keyWordTab)
             
     def returnKeyWord(self):
         return self.keyWordTab
