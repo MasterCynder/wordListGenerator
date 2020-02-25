@@ -46,15 +46,15 @@ class Combination:
         i = 0
         for wordNumber in self.tabNumbers:
             remainder = number % wordNumber
+            remainderTmp = remainder
             number = number // wordNumber
-            numberTmp = number
             j = 0
             indice = 0
             for word in self.tabPossibilities[i]:
-                if number < word.returnNbCombination():
+                if remainderTmp < word.returnNbCombination():
                     indice = j
                     break
-                number = number - word.returnNbCombination()
+                remainderTmp = remainderTmp - word.returnNbCombination()
                 j = j + 1
             result = result + self.tabPossibilities[i][indice].convertNumberInCombination(remainder)
             i = i + 1

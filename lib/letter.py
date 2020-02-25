@@ -36,7 +36,13 @@ class Letter:
         
         
     def upperCase(self):
-        return [self.letter.upper()]
+        if self.letter.upper() == self.letter:
+            return []
+        else:
+            return [self.letter.upper()]
            
     def lowerCase(self):
-        return [self.letter.lower()]
+        if self.letter.lower() == self.letter:
+            return []
+        else:
+            return [self.letter.lower()]

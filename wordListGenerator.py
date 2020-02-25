@@ -6,6 +6,7 @@ from lib import open_file as of
 from lib import write_file as wf
 from lib import usage as us
 from lib import combination as co
+from lib import progress_bar as pb
 
 def main(argv):
 
@@ -71,15 +72,22 @@ def main(argv):
             wordsTab.append(myWord)
         weight = weight * tmpWeight
         globalTab.append(wordsTab)
-            
+    
     myCombination = co.Combination(globalTab)
     myCombination.loadNumbers()
     nb = myCombination.returnNbCombination()
-    
     if simulation == False:
+        ProgressBar = None
+        percent = 0
         file = wf.WriteFile(writeFilePath)
         for i in range(nb):
             file.write(myCombination.convertNumberInCombination(i)+"\n")
+            label = "Loading " + "(" + str(i) + "/" + str(nb) + ")"
+            if ProgressBar == None:
+                ProgressBar = pb.ProgressBar(i, nb, label = label, usePercentage = True)
+            elif (i / nb * 100) >= (percent + 1) or i == (nb - 1):
+                ProgressBar.updateProgress(i, label)
+                percent = percent + 1
         file.close()
     if simulation == True:
         print(str(nb) + " Combinations")
