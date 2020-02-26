@@ -31,38 +31,6 @@ class Word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).lowerCase())
             i = i + 1
         
-            
-    def loadWordList(self):
-        self.wordList = self.listAllPossibilities(self.tabPossibilities)
-        
-    def returnWordList(self):
-        return self.wordList
-        
-    def printWordList(self):
-        for tmpWord in self.wordList:
-            print(tmpWord)
-    
-    def listAllPossibilities(self, tab):
-        if (len(tab) == 1):
-            return tab[0]
-        else:
-            result = []
-            i = 1
-            tab2  = []
-            while i < len(tab):
-                tab2.append(tab[i])
-                i = i + 1
-            i = 0
-            while i < len(tab[0]):
-                tab_tmp = self.listAllPossibilities(tab2)
-                j = 0
-                while j < len(tab_tmp):
-                    result.append(tab[0][i] + tab_tmp[j])
-                    j = j + 1
-                i = i + 1
-            return result
-        
-        
     def loadNumbers(self):
     # Load the number of combination for each letter  
         self.tabNumbers = []

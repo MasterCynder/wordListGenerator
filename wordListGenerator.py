@@ -40,11 +40,11 @@ def main(argv):
         elif opt in ("-s", "--simulation"):
             simulation = True
             
-    if writeFilePath == '':
+    if writeFilePath == '' and simulation == False:
         print("Error: -w/--write option required")
         us.usage()
         sys.exit(2)        
-    if keyWordsFilePath == '':
+    if keyWordsFilePath == '' and simulation == False:
         print("Error: -k/--keywords option required")
         us.usage()
         sys.exit(2)
