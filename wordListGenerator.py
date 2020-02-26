@@ -17,12 +17,12 @@ def main(argv):
     uppercase = False
     simulation = False
 
-    try:                                
+    try:
         opts, args = getopt.getopt(argv, "w:k:lCcs", ["write=", "keywords=", "leet", "uppercase", "lowercase", "simulation"])
-    except getopt.GetoptError:          
-        us.usage()                         
+    except getopt.GetoptError:
+        us.usage()
         sys.exit(2)
-    
+
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             us.usage()
@@ -39,22 +39,22 @@ def main(argv):
             uppercase = True
         elif opt in ("-s", "--simulation"):
             simulation = True
-            
+
     if writeFilePath == '' and simulation == False:
         print("Error: -w/--write option required")
         us.usage()
-        sys.exit(2)        
+        sys.exit(2)
     if keyWordsFilePath == '' and simulation == False:
         print("Error: -k/--keywords option required")
         us.usage()
         sys.exit(2)
-        
+
     keyWordFile = of.OpenFile(keyWordsFilePath)
     keyWordFile.read()
     keyWordFile.loadKeyWord()
     keyWordList = keyWordFile.returnKeyWord()
     globalTab = []
-    
+
     weight = 1
     tmpWeight = 0
     for possibilities in keyWordList:
@@ -72,7 +72,7 @@ def main(argv):
             wordsTab.append(myWord)
         weight = weight * tmpWeight
         globalTab.append(wordsTab)
-    
+
     myCombination = co.Combination(globalTab)
     myCombination.loadNumbers()
     nb = myCombination.returnNbCombination()
@@ -88,6 +88,7 @@ def main(argv):
             elif (i / nb * 100) >= (percent + 1) or i == (nb - 1):
                 ProgressBar.updateProgress(i, label)
                 percent = percent + 1
+	print()
         file.close()
     if simulation == True:
         print(str(nb) + " Combinations")
@@ -95,3 +96,4 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+

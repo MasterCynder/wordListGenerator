@@ -3,7 +3,7 @@ import sys
 class Letter:
     def __init__(self, letter):
         self.letter = letter
-        
+
     def leet(self):
         # Convert the letter in simply leet (the most common) and return 
         result = []
@@ -33,14 +33,14 @@ class Letter:
             result.append('7')
             result.append('+')
         return result
-        
-        
+
+
     def upperCase(self):
         if self.letter.upper() == self.letter:
             return []
         else:
             return [self.letter.upper()]
-           
+
     def lowerCase(self):
         if self.letter.lower() == self.letter:
             return []
