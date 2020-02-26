@@ -88,7 +88,7 @@ def main(argv):
             elif (i / nb * 100) >= (percent + 1) or i == (nb - 1):
                 ProgressBar.updateProgress(i, label)
                 percent = percent + 1
-	print()
+        print()
         file.close()
     if simulation == True:
         print(str(nb) + " Combinations")
