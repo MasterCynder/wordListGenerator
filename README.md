@@ -1,6 +1,9 @@
 # WordListGenerator
 
-Generate your own word list using yours key words
+Generate your own word list using your key words
+
+## Required
+Python 3+ is required
 
 ## Python help documentation:
 ```
@@ -22,7 +25,8 @@ wordListGenerator [options]
 The keywords file must respect some details:
 	- you can specify multiple words on the same line (separated by a ',') for a variant word
 	- differents words are on differents lines
-For example: 
+For example:
+
 keywords.txt
 ```
 black,white,grey
