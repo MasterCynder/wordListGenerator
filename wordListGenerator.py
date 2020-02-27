@@ -18,7 +18,7 @@ def main(argv):
     simulation = False
 
     try:                                
-        opts, args = getopt.getopt(argv, "w:k:lCcs", ["write=", "keywords=", "leet", "uppercase", "lowercase", "simulation"])
+        opts, args = getopt.getopt(argv, "hw:k:lCcs", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "simulation"])
     except getopt.GetoptError:          
         us.usage()                         
         sys.exit(2)
@@ -41,10 +41,10 @@ def main(argv):
             simulation = True
             
     if writeFilePath == '' and simulation == False:
-        print("Error: -w/--write option required")
+        print("Error: -w/--write or -s/--simulation option required")
         us.usage()
         sys.exit(2)        
-    if keyWordsFilePath == '' and simulation == False:
+    if keyWordsFilePath == '':
         print("Error: -k/--keywords option required")
         us.usage()
         sys.exit(2)
