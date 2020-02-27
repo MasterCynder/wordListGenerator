@@ -12,25 +12,25 @@ class Word:
         while i < len(word):
             self.tabPossibilities.append([word[i]])
             i = i + 1
-    
+
     def addLeet(self):
         i = 0
         for eachLetter in self.word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).leet())
             i = i + 1
-            
+
     def addUpperCase(self):
         i = 0
         for eachLetter in self.word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).upperCase())
             i = i + 1
-            
+
     def addLowerCase(self):
         i = 0
         for eachLetter in self.word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).lowerCase())
             i = i + 1
-        
+
     def loadNumbers(self):
     # Load the number of combination for each letter  
         self.tabNumbers = []
@@ -39,7 +39,7 @@ class Word:
             sizeTmp = len(tabPossibilitiesLetter)
             self.tabNumbers.append(sizeTmp)
             self.combinationNumber = self.combinationNumber * sizeTmp
-            
+
     def convertNumberInCombination(self, number):
         result = ''
         i = 0
@@ -49,10 +49,10 @@ class Word:
             result = result + self.tabPossibilities[i][remainder]
             i = i + 1
         return result
-        
+
     def returnNbCombination(self):
         return self.combinationNumber
-        
+
     def weightPossibilities(self):
         charWeight = 1.25
         return charWeight * self.returnNbCombination() * len(self.word)

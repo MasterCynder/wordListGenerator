@@ -3,7 +3,7 @@ import sys
 class Combination:
     def __init__(self, tab):
         self.tabPossibilities = tab
-            
+
     def loadNumbers(self):
     # Load the number of combination for each word
         self.tabNumbers = []
@@ -14,7 +14,7 @@ class Combination:
                 sizeTmp = sizeTmp + possibilitiesWord.returnNbCombination()
             self.combinationNumber = self.combinationNumber * sizeTmp
             self.tabNumbers.append(sizeTmp)
-            
+
     def convertNumberInCombination(self, number):
         result = ''
         i = 0
@@ -33,6 +33,6 @@ class Combination:
             result = result + self.tabPossibilities[i][indice].convertNumberInCombination(remainder)
             i = i + 1
         return result
-        
+
     def returnNbCombination(self):
         return self.combinationNumber
