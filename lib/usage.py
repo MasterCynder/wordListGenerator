@@ -11,4 +11,5 @@ def usage():
     print("-l/--leet                        using leet conversion")
     print("-C/--uppercase                   using uppercase conversion")
     print("-c/--lowercase                   using lowercase conversion")
+    print("-o/--optional                    make each word optional")
     print("-s/--simulation                  only making a simulation of the possibilities number (no wordlist generated)")

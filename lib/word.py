@@ -7,6 +7,10 @@ from lib import letter as lt
 class Word:
     def __init__(self, word):
         self.word = word
+        
+        # optional word
+        self.optionalWord = False
+        
         i = 0
         self.tabPossibilities = []
         while i < len(word):
@@ -30,6 +34,9 @@ class Word:
         for eachLetter in self.word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).lowerCase())
             i = i + 1
+            
+    def addOptionalWord(self):
+        self.optionalWord = True
 
     def loadNumbers(self):
     # Load the number of combination for each letter  
@@ -39,10 +46,17 @@ class Word:
             sizeTmp = len(tabPossibilitiesLetter)
             self.tabNumbers.append(sizeTmp)
             self.combinationNumber = self.combinationNumber * sizeTmp
+        # optional word
+        if self.optionalWord == True:
+            self.combinationNumber = self.combinationNumber + 1
 
     def convertNumberInCombination(self, number):
         result = ''
         i = 0
+        # optional word
+        if self.optionalWord == True and number == self.returnNbCombination() - 1:    
+            return ''
+        #all the others combinations
         for letterNumber in self.tabNumbers:
             remainder = number % letterNumber
             number = number // letterNumber

@@ -18,7 +18,7 @@ def main(argv):
     simulation = False
 
     try:                                
-        opts, args = getopt.getopt(argv, "hw:k:lCcs", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "simulation"])
+        opts, args = getopt.getopt(argv, "hw:k:lCcos", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "optional", "simulation"])
     except getopt.GetoptError:          
         us.usage()
         sys.exit(2)
@@ -37,6 +37,8 @@ def main(argv):
             lowercase = True
         elif opt in ("-C", "--uppercase"):
             uppercase = True
+        elif opt in ("-o", "--optional"):
+            optional = True
         elif opt in ("-s", "--simulation"):
             simulation = True
 
@@ -67,6 +69,8 @@ def main(argv):
                 myWord.addLowerCase()
             if (uppercase == True):
                 myWord.addUpperCase()
+            if (optional == True):
+                myWord.addOptionalWord()
             myWord.loadNumbers()
             tmpWeight = tmpWeight + myWord.weightPossibilities()
             wordsTab.append(myWord)

@@ -9,8 +9,7 @@ Python 3+ is required
 ```
 > wordListGenerator.py -h
 Word list generator v0.1
-Build your own word list using key words that will be transformed with leet, uppe
-rcase, lowercase, punctuation, etc.
+Build your own word list using key words that will be transformed with leet, uppercase, lowercase, punctuation, etc.
 Usage:
 wordListGenerator [options]
 -h/--help						show this help message and exit
@@ -19,6 +18,7 @@ wordListGenerator [options]
 -l/--leet            	        using leet conversion
 -C/--uppercase          	    using uppercase conversion
 -c/--lowercase              	using lowercase conversion
+-o/--optional                   make each word optional
 -s/--simulation              	only making a simulation of the possibilities number (no wordlist generated)
 ```
 ## Keywords file
