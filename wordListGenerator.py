@@ -15,6 +15,7 @@ def main(argv):
     leet = False
     lowercase = False
     uppercase = False
+    optional = False
     simulation = False
 
     try:                                
@@ -76,7 +77,7 @@ def main(argv):
             wordsTab.append(myWord)
         weight = weight * tmpWeight
         globalTab.append(wordsTab)
-
+    print(globalTab)
     myCombination = co.Combination(globalTab)
     myCombination.loadNumbers()
     nb = myCombination.returnNbCombination()
