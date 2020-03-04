@@ -19,6 +19,7 @@ wordListGenerator [options]
 -C/--uppercase          	    using uppercase conversion
 -c/--lowercase              	using lowercase conversion
 -o/--optional                   make each word optional
+-d/--disorder                   generate combinations with all possible word orders
 -s/--simulation              	only making a simulation of the possibilities number (no wordlist generated)
 ```
 ## Keywords file

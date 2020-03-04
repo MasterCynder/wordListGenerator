@@ -12,4 +12,5 @@ def usage():
     print("-C/--uppercase                   using uppercase conversion")
     print("-c/--lowercase                   using lowercase conversion")
     print("-o/--optional                    make each word optional")
+    print("-d/--disorder                    generate combinations with all possible word orders")
     print("-s/--simulation                  only making a simulation of the possibilities number (no wordlist generated)")
