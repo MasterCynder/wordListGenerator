@@ -13,4 +13,7 @@ def usage():
     print("-c/--lowercase                   using lowercase conversion")
     print("-o/--optional                    make each word optional")
     print("-d/--disorder                    generate combinations with all possible word orders")
+    print("-a/--startpunctuation            using optional punctuation sign like '*,!.' and more at the begin of the chain")
+    print("-z/--endpunctuation              using optional punctuation sign like '*,!.' and more at the end of the chain")
+    print("-m/--middlepunctuation           using optional punctuation sign like '*,!.' and more between each word of the chain")
     print("-s/--simulation                  only making a simulation of the possibilities number (no wordlist generated)")

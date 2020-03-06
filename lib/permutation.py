@@ -28,7 +28,12 @@ class Permutation:
     def convertNumberInCombination(self, number):
         combination = self.tabCombinations[number//(self.combinationNumber // len(self.tabCombinations))]
         number = number % (self.combinationNumber // len(self.tabCombinations))
-        return combination.convertNumberInCombination(number)
+        result = combination.convertNumberInCombination(number)
+        self.tabResult = combination.returnTabCombination()
+        return result
 
     def returnNbCombination(self):
         return self.combinationNumber
+        
+    def returnTabCombination(self):
+        return self.tabResult

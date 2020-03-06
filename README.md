@@ -20,6 +20,9 @@ wordListGenerator [options]
 -c/--lowercase					using lowercase conversion
 -o/--optional					make each word optional
 -d/--disorder					generate combinations with all possible word orders
+-a/--startpunctuation			using optional punctuation sign like '*,!.' and more at the begin of the chain
+-z/--endpunctuation				using optional punctuation sign like '*,!.' and more at the end of the chain
+-m/--middlepunctuation			using optional punctuation sign like '*,!.' and more between each word of the chain
 -s/--simulation					only making a simulation of the possibilities number (no wordlist generated)
 ```
 ## Keywords file

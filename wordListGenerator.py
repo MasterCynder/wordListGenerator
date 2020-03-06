@@ -7,6 +7,7 @@ from lib import write_file as wf
 from lib import usage as us
 from lib import combination as co
 from lib import permutation as pm
+from lib import separator as sp
 from lib import progress_bar as pb
 
 def main(argv):
@@ -18,10 +19,13 @@ def main(argv):
     uppercase = False
     optional = False
     disorder = False
+    startChar = False;
+    endedChar = False;
+    separatorChar = False;
     simulation = False
 
     try:                                
-        opts, args = getopt.getopt(argv, "hw:k:lCcods", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "optional", "disorder", "simulation"])
+        opts, args = getopt.getopt(argv, "hw:k:lCcodazms", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "optional", "disorder", "startpunctuation", "endpunctuation", "middlepunctuation", "simulation"])
     except getopt.GetoptError:          
         us.usage()
         sys.exit(2)
@@ -44,6 +48,12 @@ def main(argv):
             optional = True
         elif opt in ("-d", "--disorder"):
             disorder = True
+        elif opt in ("-a", "--startpunctuation"):
+            startChar = True
+        elif opt in ("-z", "--endpunctuation"):
+            endedChar = True
+        elif opt in ("-m", "--middlepunctuation"):
+            separatorChar = True
         elif opt in ("-s", "--simulation"):
             simulation = True
 
@@ -82,17 +92,23 @@ def main(argv):
         weight = weight * tmpWeight
         globalTab.append(wordsTab)
     
-    myPermutation = pm.Permutation(globalTab)
-    if (disorder == True):
-        myPermutation.addPermutation()
-    myPermutation.loadNumbers()
-    nb = myPermutation.returnNbCombination()
+    mySeparator = sp.Separator(globalTab)
+    if disorder == True:
+        mySeparator.addPermutation()
+    if startChar == True:
+        mySeparator.addCharStarted()
+    if endedChar == True:
+        mySeparator.addCharEnded()
+    if separatorChar == True:
+        mySeparator.addCharSeparated()
+    mySeparator.loadNumbers()
+    nb = mySeparator.returnNbCombination()
     if simulation == False:
         ProgressBar = None
         percent = 0
         file = wf.WriteFile(writeFilePath)
         for i in range(nb):
-            file.write(myPermutation.convertNumberInCombination(i)+"\n")
+            file.write(mySeparator.convertNumberInCombination(i)+"\n")
             label = "Loading " + "(" + str(i) + "/" + str(nb) + ")"
             if ProgressBar == None:
                 ProgressBar = pb.ProgressBar(i, nb, label = label, usePercentage = True)

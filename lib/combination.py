@@ -17,6 +17,7 @@ class Combination:
 
     def convertNumberInCombination(self, number):
         result = ''
+        self.tabResult = []
         i = 0
         for wordNumber in self.tabNumbers:
             remainder = number % wordNumber
@@ -31,8 +32,12 @@ class Combination:
                 remainderTmp = remainderTmp - word.returnNbCombination()
                 j = j + 1
             result = result + self.tabPossibilities[i][indice].convertNumberInCombination(remainder)
+            self.tabResult.append(self.tabPossibilities[i][indice].convertNumberInCombination(remainder))
             i = i + 1
         return result
 
     def returnNbCombination(self):
         return self.combinationNumber
+        
+    def returnTabCombination(self):
+        return self.tabResult
