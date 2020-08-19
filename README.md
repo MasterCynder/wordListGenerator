@@ -12,18 +12,18 @@ Word list generator v0.1
 Build your own word list using key words that will be transformed with leet, uppercase, lowercase, punctuation, etc.
 Usage:
 wordListGenerator [options]
--h/--help						show this help message and exit
+-h/--help				show this help message and exit
 -w/--write file		(Required)	specifie the path for writing the word list
--k/--keywords file	(Required)	specifie the path for writing the word list
--l/--leet						using leet conversion
--C/--uppercase					using uppercase conversion
--c/--lowercase					using lowercase conversion
--o/--optional					make each word optional
--d/--disorder					generate combinations with all possible word orders
+-k/--keywords file	(Required)	specifie the path for reading the keywords list
+-l/--leet				using leet conversion
+-C/--uppercase				using uppercase conversion
+-c/--lowercase				using lowercase conversion
+-o/--optional				make each word optional
+-d/--disorder				generate combinations with all possible word orders
 -a/--startpunctuation			using optional punctuation sign like '*,!.' and more at the begin of the chain
--z/--endpunctuation				using optional punctuation sign like '*,!.' and more at the end of the chain
+-z/--endpunctuation			using optional punctuation sign like '*,!.' and more at the end of the chain
 -m/--middlepunctuation			using optional punctuation sign like '*,!.' and more between each word of the chain
--s/--simulation					only making a simulation of the possibilities number (no wordlist generated)
+-s/--simulation				only making a simulation of the possibilities number (no wordlist generated)
 ```
 ## Keywords file
 <pre>
