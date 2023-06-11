@@ -34,7 +34,11 @@ class Word:
         for eachLetter in self.word:
             self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).lowerCase())
             i = i + 1
-            
+    def addCamelCase(self):
+        #print (len(self.tabPossibilities))
+        if (len(self.tabPossibilities)>0):
+            self.tabPossibilities[0] = self.tabPossibilities[0] + (lt.Letter(self.word[0]).upperCase())
+
     def addOptionalWord(self):
         self.optionalWord = True
 

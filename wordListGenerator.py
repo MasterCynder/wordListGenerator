@@ -23,9 +23,10 @@ def main(argv):
     endedChar = False;
     separatorChar = False;
     simulation = False
+    camelcase = False
 
     try:                                
-        opts, args = getopt.getopt(argv, "hw:k:lCcodazms", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "optional", "disorder", "startpunctuation", "endpunctuation", "middlepunctuation", "simulation"])
+        opts, args = getopt.getopt(argv, "hw:k:lCceodazms", ["help", "write=", "keywords=", "leet", "uppercase", "lowercase", "camel", "optional", "disorder", "startpunctuation", "endpunctuation", "middlepunctuation", "simulation"])
     except getopt.GetoptError:          
         us.usage()
         sys.exit(2)
@@ -42,6 +43,8 @@ def main(argv):
             leet = True
         elif opt in ("-c", "--lowercase"):
             lowercase = True
+        elif opt in ("-e", "--camel"):
+            camelcase = True
         elif opt in ("-C", "--uppercase"):
             uppercase = True
         elif opt in ("-o", "--optional"):
@@ -84,6 +87,8 @@ def main(argv):
                 myWord.addLowerCase()
             if (uppercase == True):
                 myWord.addUpperCase()
+            if (camelcase == True):
+                myWord.addCamelCase()
             if (optional == True):
                 myWord.addOptionalWord()
             myWord.loadNumbers()
