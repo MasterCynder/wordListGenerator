@@ -11,6 +11,7 @@ def usage():
     print("-l/--leet                        using leet conversion")
     print("-C/--uppercase                   using uppercase conversion")
     print("-c/--lowercase                   using lowercase conversion")
+    print("-e/--camel                       using camelcase conversion")
     print("-o/--optional                    make each word optional")
     print("-d/--disorder                    generate combinations with all possible word orders")
     print("-a/--startpunctuation            using optional punctuation sign like '*,!.' and more at the begin of the chain")
