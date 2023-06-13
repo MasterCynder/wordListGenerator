@@ -18,7 +18,7 @@ wordListGenerator [options]
 -l/--leet				using leet conversion
 -C/--uppercase				using uppercase conversion
 -c/--lowercase				using lowercase conversion
--e/--camel                  using camelcase conversion
+-e/--camel                  		using camelcase conversion
 -o/--optional				make each word optional
 -d/--disorder				generate combinations with all possible word orders
 -a/--startpunctuation			using optional punctuation sign like '*,!.' and more at the begin of the chain
