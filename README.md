@@ -10,21 +10,28 @@ Python 3+ is required
 > wordListGenerator.py -h
 Word list generator v0.1
 Build your own word list using key words that will be transformed with leet, uppercase, lowercase, punctuation, etc.
-Usage:
-wordListGenerator [options]
+Usage: python wordListGenerator.py [options]
 -h/--help				show this help message and exit
--w/--write file		(Required)	specifie the path for writing the word list
--k/--keywords file	(Required)	specifie the path for reading the keywords list
--l/--leet				using leet conversion
--C/--uppercase				using uppercase conversion
--c/--lowercase				using lowercase conversion
--e/--camel                  		using camelcase conversion
--o/--optional				make each word optional
--d/--disorder				generate combinations with all possible word orders
--a/--startpunctuation			using optional punctuation sign like '*,!.' and more at the begin of the chain
--z/--endpunctuation			using optional punctuation sign like '*,!.' and more at the end of the chain
--m/--middlepunctuation			using optional punctuation sign like '*,!.' and more between each word of the chain
--s/--simulation				only making a simulation of the possibilities number (no wordlist generated)
+Required:
+-w/--write file		    	Specifie the path for writing the word list
+-k/--keywords file		    Specifie the path for reading the keywords list
+Options:
+-l/--leet				    Using leet conversion
+-C/--uppercase				Using uppercase conversion
+-c/--lowercase				Using lowercase conversion
+-e/--camel                  Using camelcase conversion
+-o/--optional				Make each word optional
+-d/--disorder				Generate combinations with all possible word orders
+-a/--startpunctuation		Using optional punctuation sign like '*,!.' and more at the begin of the chain
+-z/--endpunctuation			Using optional punctuation sign like '*,!.' and more at the end of the chain
+-m/--middlepunctuation		Using optional punctuation sign like '*,!.' and more between each word of the chain
+-y/--year                   Add years (100 past to 30 future)
+-j/--ddmm                   Add days (EU format: ddmm)
+-J/--mmdd                   Add days (US format: mmdd)
+-D/--dateeu                 Add full dates (EU format: ddmmyyyy)
+-U/--dateus                 Add full dates (US format: mmddyyyy)
+-s/--simulation				Only making a simulation of the possibilities number (no wordlist generated)
+
 ```
 ## Keywords file
 <pre>
