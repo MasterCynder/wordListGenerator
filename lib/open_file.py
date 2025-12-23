@@ -1,21 +1,22 @@
-import sys
-
 class OpenFile:
     def __init__(self, path):
         self.path = path
-        self.open()
-
-    def open(self):
-        self.file = open(self.path, 'r')
 
     def read(self):
-        self.content = self.file.read()
+        """Reads the entire file content."""
+        with open(self.path, 'r', encoding='utf-8') as f:
+            self.content = f.read()
 
     def loadKeyWord(self):
+        """Parses lines and commas into a keyword matrix, removing duplicates."""
         self.keyWordTab = []
         lines = self.content.split('\n')
         for line in lines:
-            self.keyWordTab.append(line.split(','))
+            if line.strip():
+                # Clean whitespace and filter duplicates on the same line
+                variants = list(set([v.strip() for v in line.split(',') if v.strip()]))
+                if variants:
+                    self.keyWordTab.append(variants)
 
     def returnKeyWord(self):
         return self.keyWordTab

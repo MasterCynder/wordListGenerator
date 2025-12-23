@@ -1,43 +1,26 @@
-import sys
-
 class Combination:
     def __init__(self, tab):
-        self.tabPossibilities = tab
+        self.tabOrigin = tab # List of Word objects
 
     def loadNumbers(self):
-    # Load the number of combination for each word
-        self.tabNumbers = []
+        """Calculates the product of all word combinations in this specific order."""
         self.combinationNumber = 1
-        for line in self.tabPossibilities:
-            sizeTmp = 0
-            for possibilitiesWord in line:
-                sizeTmp = sizeTmp + possibilitiesWord.returnNbCombination()
-            self.combinationNumber = self.combinationNumber * sizeTmp
-            self.tabNumbers.append(sizeTmp)
+        for word_list in self.tabOrigin:
+            # We assume index 0 as each keyword group is handled as a list
+            self.combinationNumber *= word_list[0].returnNbCombination()
 
     def convertNumberInCombination(self, number):
-        result = ''
+        """Converts a global index into specific variations for each word."""
         self.tabResult = []
-        i = 0
-        for wordNumber in self.tabNumbers:
-            remainder = number % wordNumber
-            remainderTmp = remainder
-            number = number // wordNumber
-            j = 0
-            indice = 0
-            for word in self.tabPossibilities[i]:
-                if remainderTmp < word.returnNbCombination():
-                    indice = j
-                    break
-                remainderTmp = remainderTmp - word.returnNbCombination()
-                j = j + 1
-            result = result + self.tabPossibilities[i][indice].convertNumberInCombination(remainder)
-            self.tabResult.append(self.tabPossibilities[i][indice].convertNumberInCombination(remainder))
-            i = i + 1
-        return result
+        for word_list in self.tabOrigin:
+            word_obj = word_list[0]
+            nb = word_obj.returnNbCombination()
+            self.tabResult.append(word_obj.convertNumberInCombination(number % nb))
+            number //= nb
+        return "".join(self.tabResult)
 
     def returnNbCombination(self):
         return self.combinationNumber
-        
+
     def returnTabCombination(self):
         return self.tabResult
