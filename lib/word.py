@@ -1,76 +1,68 @@
 import sys
-import lib
-from math import *
 from lib import letter as lt
-# import letter as lt
 
 class Word:
     def __init__(self, word):
         self.word = word
-        
-        # optional word
         self.optionalWord = False
-        
-        i = 0
-        self.tabPossibilities = []
-        while i < len(word):
-            self.tabPossibilities.append([word[i]])
-            i = i + 1
+        self.tabPossibilities = [[char] for char in word] # Version condensée de ta boucle while
+
+    def _apply_transformation(self, func):
+        for i in range(len(self.word)):
+            # Récupérer les variantes pour la lettre à la position i
+            variants = func(lt.Letter(self.word[i]))
+            for v in variants:
+                # On ajoute UNIQUEMENT si la variante n'existe pas déjà à cette position
+                if v not in self.tabPossibilities[i]:
+                    self.tabPossibilities[i].append(v)
 
     def addLeet(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).leet())
-            i = i + 1
+        self._apply_transformation(lambda l: l.leet())
 
     def addUpperCase(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).upperCase())
-            i = i + 1
+        self._apply_transformation(lambda l: l.upperCase())
 
     def addLowerCase(self):
-        i = 0
-        for eachLetter in self.word:
-            self.tabPossibilities[i] = self.tabPossibilities[i] + (lt.Letter(eachLetter).lowerCase())
-            i = i + 1
+        self._apply_transformation(lambda l: l.lowerCase())
+
     def addCamelCase(self):
-        #print (len(self.tabPossibilities))
-        if (len(self.tabPossibilities)>0):
-            self.tabPossibilities[0] = self.tabPossibilities[0] + (lt.Letter(self.word[0]).upperCase())
+        if len(self.tabPossibilities) > 0:
+            # On transforme uniquement la première lettre
+            upper_first = lt.Letter(self.word[0]).upperCase()
+            for t in upper_first:
+                if t not in self.tabPossibilities[0]:
+                    self.tabPossibilities[0].append(t)
 
     def addOptionalWord(self):
         self.optionalWord = True
 
     def loadNumbers(self):
-    # Load the number of combination for each letter  
         self.tabNumbers = []
         self.combinationNumber = 1
         for tabPossibilitiesLetter in self.tabPossibilities:
             sizeTmp = len(tabPossibilitiesLetter)
             self.tabNumbers.append(sizeTmp)
-            self.combinationNumber = self.combinationNumber * sizeTmp
-        # optional word
-        if self.optionalWord == True:
-            self.combinationNumber = self.combinationNumber + 1
+            self.combinationNumber *= sizeTmp
+        
+        if self.optionalWord:
+            self.combinationNumber += 1
 
     def convertNumberInCombination(self, number):
-        result = ''
-        i = 0
-        # optional word
-        if self.optionalWord == True and number == self.returnNbCombination() - 1:    
+        if self.optionalWord and number == self.combinationNumber - 1:    
             return ''
-        #all the others combinations
-        for letterNumber in self.tabNumbers:
+            
+        result = []
+        for i, letterNumber in enumerate(self.tabNumbers):
             remainder = number % letterNumber
-            number = number // letterNumber
-            result = result + self.tabPossibilities[i][remainder]
-            i = i + 1
-        return result
+            number //= letterNumber
+            result.append(self.tabPossibilities[i][remainder])
+        
+        return "".join(result) # Plus rapide que l'addition de chaînes
 
     def returnNbCombination(self):
         return self.combinationNumber
 
     def weightPossibilities(self):
+        # Estimation du poids en octets (approximatif)
         charWeight = 1.25
-        return charWeight * self.returnNbCombination() * len(self.word)
+        return charWeight * self.combinationNumber * len(self.word)
